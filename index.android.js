@@ -12,7 +12,7 @@ import {
 } from 'react-native'
 
 import reducer from './src/reducers'
-import Peckish from './src/components/Peckish'
+import AppContainer from './src/containers/AppContainer'
 
 const configureStore = (initialState) => {
   const enhancer = compose(
@@ -28,7 +28,7 @@ const store = configureStore({})
 
 const App = () => (
   <Provider store={store}>
-    <Peckish />
+    <AppContainer />
   </Provider>
 )
 

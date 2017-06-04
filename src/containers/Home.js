@@ -15,25 +15,49 @@ const styles = {
   },
   rows: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    height: 80,
+    borderBottomColor: '#D8DCDA',
+    borderBottomWidth: 2,
+    padding: 5
+  },
+  searchSection: {
+    backgroundColor: '#FE4858',
+    height: 60,
+    justifyContent: 'center',
+    paddingLeft: 22
+  },
+  searchText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#fff'
+  },
+  container: {
+    flex: 1
+  },
+  recipeSection: {
+    flex: 3
+  },
+  recipeTitle: {
+    paddingLeft: 5
   }
 }
 
 class Home extends React.Component {
   render () {
     return (
-      <View>
-        <View>
+      <View style={styles.container}>
+        <View style={styles.searchSection}>
           <TouchableOpacity onPress={() => this.props.fetchRecipes('cheese, beef, cucumber')}>
-            <Text>Fetch Recipe</Text>
+            <Text style={styles.searchText}>Fetch Recipe</Text>
           </TouchableOpacity>
         </View>
-        <ScrollView>
+        <ScrollView style={styles.recipeSection}>
           {this.props.searchedRecipes.map((recipe, index) => {
             return (
               <View style={styles.rows} key={index}>
                 <Image source={{uri: recipe.thumbnail}} style={styles.image} />
-                <Text>{recipe.title}</Text>
+                <Text style={styles.recipeTitle}>{recipe.title}</Text>
               </View>
             )
           })}

@@ -3,8 +3,7 @@ export const fetchRecipes = (ingredients) => {
   return (dispatch, getState) => {
     const url = 'http://www.recipepuppy.com/api/'
     const params = [
-      `i=${encodeURIComponent(ingredients)}`,
-      'p=1'
+      `i=${encodeURIComponent(ingredients)}`
     ].join('&')
     return fetch(`${url}?${params}`)
       .then(res => res.json())

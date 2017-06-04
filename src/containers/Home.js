@@ -3,9 +3,21 @@ import {
   View,
   Text,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  Image
 } from 'react-native'
 import { connect } from 'react-redux'
+
+const styles = {
+  image: {
+    height: 64,
+    width: 120
+  },
+  rows: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  }
+}
 
 class Home extends React.Component {
   render () {
@@ -16,7 +28,16 @@ class Home extends React.Component {
             <Text>Fetch Recipe</Text>
           </TouchableOpacity>
         </View>
-        <ScrollView />
+        <ScrollView>
+          {this.props.searchedRecipes.map((recipe, index) => {
+            return (
+              <View style={styles.rows} key={index}>
+                <Image source={{uri: recipe.thumbnail}} style={styles.image} />
+                <Text>{recipe.title}</Text>
+              </View>
+            )
+          })}
+        </ScrollView>
       </View>
     )
   }
